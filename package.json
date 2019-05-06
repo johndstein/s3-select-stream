@@ -1,0 +1,23 @@
+{
+  "name": "s3-select-stream",
+  "version": "0.0.0",
+  "description": "Search files in S3 with S3 Select SQL query",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johndstein/s3-select-stream.git"
+  },
+  "author": "John Stein",
+  "license": "unlicense",
+  "bugs": {
+    "url": "https://github.com/johndstein/s3-select-stream/issues"
+  },
+  "homepage": "https://github.com/johndstein/s3-select-stream#readme",
+  "dependencies": {
+    "aws-sdk": "^2.450.0",
+    "event-stream": "^4.0.1"
+  }
+}
