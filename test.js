@@ -11,7 +11,7 @@ const zlib = require('zlib');
 
 const bucket = process.env.S3_SELECT_BUCKET
 const keys = fs.readFileSync(process.env.S3_SELECT_KEYS).toString().split('\n')
-keys.splice(500)
+keys.splice(100)
 
 const hostname = '10.160.2.12'
 const options = {
