@@ -34,9 +34,9 @@ s3s(keys, options).pipe(process.stdout)
 ```
 
 The above assumes JSON files like below where each line contains a single JSON
-document.
+document. For example `students/2011.json` might look like this.
 
-```
+```json
 {"name": "frank"}
 {"name": "mary"}
 {"name": "lisa"}
@@ -44,12 +44,11 @@ document.
 {"name": "pete"}
 ```
 
-## s3s(keys, options, [s3opts], [sharedIniFileCredentials])
+## require('s3-select-stream')(keys, options, [s3opts], [sharedIniFileCredentials])
 
-We loop over your list of keys and run the S3 Select query against each one.
-We return a readable stream.
+The parameters are as follows.
 
-`keys` (REQUIRED) is an array of keys in your S3 bucket. Keys should
+`keys` (REQUIRED) an array of keys in your S3 bucket. Keys should
 **not** have a leading forward slash (/). Example:
 
 ```js
@@ -60,7 +59,7 @@ const keys = [
 ]
 ```
 
-`options` (REQUIRED) are the options (minus the `Key`) that get passed to `S3.selectObjectContent`.
+`options` (REQUIRED) options (minus the `Key`) that get passed to `S3.selectObjectContent`.
 See
 https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#selectObjectContent-property
 
@@ -83,10 +82,10 @@ const options = {
 }
 ```
 
-`s3opts` (optional) are the options that get passed to `new S3([options])`. See
+`s3opts` (optional) options that get passed to `new S3([options])`. See
 https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#constructor-property
 
-`sharedIniFileCredentials` are the options that get passed to
+`sharedIniFileCredentials` (optional) options that get passed to
 `new AWS.SharedIniFileCredentials(sharedIniFileCredentials)`
 See
 https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SharedIniFileCredentials.html#constructor-property
@@ -99,7 +98,7 @@ https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SharedIniFileCredentials
 
 The easy way to authenticate to AWS is to create the following two files.
 
-Note: `aws_session_token` is not needed unless your keys are temporary.
+Note: `aws_session_token` is only needed if you use temporary keys.
 
 `~/.aws/credentials`
 
