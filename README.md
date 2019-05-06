@@ -1,8 +1,11 @@
 # s3-select-stream
 
-Search a list of files (keys) in S3 with S3 Select SQL query.
+Search a list of S3 files (keys) with an S3 Select SQL query.
 
 https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html
+
+See `test.js` for a working example of searching a bunch of S3 files
+and uploading the results back into S3.
 
 ## Quick Start
 

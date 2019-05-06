@@ -1,17 +1,21 @@
 #!/usr/bin/env node
 
-const { performance } = require('perf_hooks');
+const {
+   performance
+} = require('perf_hooks');
 performance.mark('A')
 
 const AWS = require('aws-sdk');
 const fs = require('fs')
 const s3stream = require('./')
-const { PassThrough } = require('stream')
+const {
+   PassThrough
+} = require('stream')
 const zlib = require('zlib');
 
 const bucket = process.env.S3_SELECT_BUCKET
 const keys = fs.readFileSync(process.env.S3_SELECT_KEYS).toString().split('\n')
-keys.splice(100)
+keys.splice(15)
 
 const hostname = '10.160.2.12'
 const options = {
@@ -31,14 +35,10 @@ const options = {
    }
 }
 
-// s3stream(keys, options).pipe(process.stdout)
-
-var s3obj = new AWS.S3()
-
-s3obj.upload({
+new AWS.S3().upload({
    Bucket: bucket,
    Key: 'TTT',
-   Body: s3stream(keys, options)
+   Body: s3stream(keys, options).pipe(zlib.createGzip())
 }, (err, data) => {
    performance.mark('B')
    performance.measure('A to B', 'A', 'B')
